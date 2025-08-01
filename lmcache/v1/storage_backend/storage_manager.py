@@ -340,6 +340,11 @@ class StorageManager:
 
         return None
 
+    def touch_cache(self):
+        for backend_name, backend in self.storage_backends.items():
+            if backend_name == "LocalCPUBackend" or backend_name == "LocalDiskBackend":
+                backend.touch_cache()
+
     def remove(
         self,
         key: CacheEngineKey,
