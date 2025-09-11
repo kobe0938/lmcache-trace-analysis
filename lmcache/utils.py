@@ -117,7 +117,7 @@ class CacheEngineKey:
                 if k.startswith("lmcache.tag."):
                     if tags is None:
                         tags = {}
-                    tags[k[len("lmcache.tag.") :]] = v
+                    tags[k[len("lmcache.tag.") :]] = str(v)
         self.tags = tags
 
     def __hash__(self):
@@ -141,6 +141,19 @@ class CacheEngineKey:
                 "%".join([f"{k}={v}" for k, v in self.tags.items()]),
             )
         )
+
+    def __eq__(self, other):
+        if type(self) is type(other):
+            return (
+                self.fmt == other.fmt
+                and self.model_name == other.model_name
+                and self.world_size == other.world_size
+                and self.worker_id == other.worker_id
+                and self.chunk_hash == other.chunk_hash
+                and self.tags == other.tags
+            )
+
+        return False
 
     def to_string(self):
         s = (
@@ -269,6 +282,12 @@ class LayerCacheEngineKey(CacheEngineKey):
                 self.layer_id,
             )
         )
+
+    def __eq__(self, other):
+        if super().__eq__(other):
+            return self.layer_id == other.layer_id
+
+        return False
 
     def to_string(self):
         s = (
