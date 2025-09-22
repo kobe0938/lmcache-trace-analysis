@@ -330,6 +330,12 @@ _CONFIG_DEFINITIONS: dict[str, dict[str, Any]] = {
         "default": None,
         "env_converter": _to_str_list,
     },
+    # Lookup client configurations
+    "lookup_timeout_ms": {
+        "type": int,
+        "default": 3000,
+        "env_converter": int,
+    },
 }
 
 
