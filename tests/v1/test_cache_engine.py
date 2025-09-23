@@ -1315,7 +1315,6 @@ def test_builder_destroy_multiple_instances(autorelease_v1):
     LMCacheEngineBuilder.destroy(instance_id2)
 
 
-@pytest.mark.skip(reason="Skipping this until we have GDS on CI machine")
 def test_multi_device_backends(autorelease_v1):
     """Test running GPU-related backend with local CPU backends
     together
@@ -1359,6 +1358,9 @@ def test_multi_device_backends(autorelease_v1):
                 "max_local_cpu_size": 5,
                 "gds_path": temp_dir,
                 "cufile_buffer_size": 1024,
+                "extra_config": {
+                    "use_direct_io": True,
+                },
             }
         )
         connector = create_gpu_connector(1024, 32)
