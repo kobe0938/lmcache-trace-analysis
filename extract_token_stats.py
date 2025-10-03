@@ -57,15 +57,17 @@ def extract_token_stats(log_file_path, output_csv_path):
         total_tokens_sum = sum(entry['total_tokens'] for entry in extracted_data)
         hit_tokens_sum = sum(entry['lmcache_hit_tokens'] for entry in extracted_data)
         need_to_load_sum = sum(entry['need_to_load'] for entry in extracted_data)
+        need_to_load_positive_sum = sum(entry['need_to_load'] for entry in extracted_data if entry['need_to_load'] > 0)
         
         print(f"\nStatistics:")
         print(f"Sum of total_tokens: {total_tokens_sum}")
         print(f"Sum of lmcache_hit_tokens: {hit_tokens_sum}")
         print(f"Sum of need_to_load: {need_to_load_sum}")
+        print(f"Sum of need_to_load (positive only): {need_to_load_positive_sum}")
         
         if total_tokens_sum > 0:
-            lmcache_hit_rate = need_to_load_sum / total_tokens_sum
-            vllm_hit_rate = hit_tokens_sum / total_tokens_sum
+            lmcache_hit_rate = need_to_load_positive_sum / total_tokens_sum
+            vllm_hit_rate = (hit_tokens_sum - need_to_load_sum) / total_tokens_sum
             print(f"LMCache hit rate: {lmcache_hit_rate:.4f}")
             print(f"VLLM hit rate: {vllm_hit_rate:.4f}")
     else:
