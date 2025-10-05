@@ -156,6 +156,8 @@ if __name__ == "__main__":
 
     start_replay(args.csv_file, args.base_url, args.qps, args.max_request_num)
 
-# exmaple command
+# exmaple command /data/conversation_qps_6.csv
 # python lmcache-trace-analysis/replay2.py --csv-file conversation_id_10000_from_241227_qps_3_model_filtered_reordered.csv --base-url http://0.0.0.0:8020/v1/completions --qps 6.0 --max-request-num 10000
-# curl http://0.0.0.0:8030/metrics
+# python lmcache-trace-analysis/replay2.py --csv-file conversation_id_10000_from_241227_qps_3_model_filtered_reordered.csv --base-url http://0.0.0.0:8030/v1/completions --qps 6.0 --max-request-num 10000
+# curl http://0.0.0.0:8030/metrics > lmcache_metrics_output.log
+# curl http://0.0.0.0:8020/metrics > vllm_metrics_output.log
