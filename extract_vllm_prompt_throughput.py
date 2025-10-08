@@ -89,4 +89,4 @@ if __name__ == "__main__":
     exit(main())
 
 # 2
-# python3 /home/ubuntu/yuhan/lmcache-trace-analysis/extract_vllm_prompt_throughput.py --log-file lmcache_server_qps_5.log --output vllm_prompt_throughput_stats.csv
+# python3 /home/ubuntu/yuhan/lmcache-trace-analysis/extract_vllm_prompt_throughput.py --log-file lmcache_server.log --output vllm_prompt_throughput_stats.csv

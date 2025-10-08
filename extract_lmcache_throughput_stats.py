@@ -100,4 +100,4 @@ if __name__ == "__main__":
     exit(main())
 
 # 3
-# python /home/ubuntu/yuhan/lmcache-trace-analysis/extract_lmcache_throughput_stats.py --log-file lmcache_server_qps_5.log --output throughput_stats.csv
+# python /home/ubuntu/yuhan/lmcache-trace-analysis/extract_lmcache_throughput_stats.py --log-file lmcache_server.log --output throughput_stats.csv

@@ -101,4 +101,4 @@ if __name__ == "__main__":
     exit(main())
 
 # 1
-# python /home/ubuntu/yuhan/lmcache-trace-analysis/extract_token_stats.py --log-file lmcache_server_qps_5.log --output token_stats.csv
+# python /home/ubuntu/yuhan/lmcache-trace-analysis/extract_token_stats.py --log-file lmcache_server.log --output token_stats.csv
